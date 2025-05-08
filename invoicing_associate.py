@@ -22,8 +22,8 @@ class InvoicingAssociate(DriverGetter, LoginUtils):
         self.invoicing_url_getter()
         self.collection_filter()
         self.load_invoicing_references()
-        self.get_table_data_and_set_input()
         input('Pressione Enter para continuar...')
+        self.get_table_data_and_set_input()
 
     def invoicing_url_getter(self):
         url = os.getenv('KMLN_INVOICING_URL')

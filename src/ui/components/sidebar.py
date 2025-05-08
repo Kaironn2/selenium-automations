@@ -1,15 +1,14 @@
-from PySide6.QtWidgets import QVBoxLayout, QSizePolicy, QLabel, QFrame, QFrame, QGraphicsDropShadowEffect, QButtonGroup
-from PySide6.QtGui import QColor
-from PySide6.QtCore import Qt
+from src.ui.qt_imports import *
 
 from src.utils.path_utils import PathUtils
 from src.ui.helpers.icon_color_converter import IconColorConverter as icc
-from src.ui.components.sidebar_button import SidebarButton
+from src.ui.components.push_buttons import SidebarButton
 
 
 class Sidebar(QFrame):
     def __init__(self, on_selected=None, parent=None):
         super().__init__(parent)
+        self.on_selected = on_selected
         self.setObjectName('Sidebar')
         self.setFixedWidth(240)
         self.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Expanding)
@@ -70,6 +69,7 @@ class Sidebar(QFrame):
             text='Delivery Launcher',
             key='delivery_launcher',
             icon_path=PathUtils.resource_path('icons/package-check.svg'),
+            on_click=self.on_selected,
         )
         self.create_section('Ecs', [btn1])
 
@@ -78,5 +78,6 @@ class Sidebar(QFrame):
             text='Invoicing Associate',
             key='invoicing_associate',
             icon_path=PathUtils.resource_path('icons/circle-dollar-sign.svg'),
+            on_click=self.on_selected,
         )
         self.create_section('Kmln', [btn1])

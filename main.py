@@ -7,7 +7,7 @@ from src.ui.app import Window
 
 if __name__ == '__main__':
     app = QApplication([])
-    QFontDatabase.addApplicationFont(PathUtils.resource_path('src/ui/assets/fonts/Inter.ttc'))
+    QFontDatabase.addApplicationFont(PathUtils.resource_path('fonts/Inter.ttc'))
     app.setStyleSheet("""
         * {
             font-family: 'Inter';
