@@ -17,19 +17,7 @@ class Window(QMainWindow):
         main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.setSpacing(0)
 
-        self.sidebar = Sidebar(self.select_sidebar)
-        self.sidebar.setFixedWidth(240)
+        self.sidebar = Sidebar()
         main_layout.addWidget(self.sidebar)
 
-        self.central_stack = QStackedWidget()
-        self.invoicing_associate_view = InvoicingAssociateView()
-        self.central_stack.addWidget(self.invoicing_associate_view)
-
-        main_layout.addWidget(self.central_stack)
         self.setCentralWidget(main_widget)
-
-        self.sidebar.select('invoicing_associate')
-        self.central_stack.setCurrentIndex(0)
-
-    def select_sidebar(self, key):
-        self.central_stack.setCurrentIndex(0)
