@@ -6,6 +6,7 @@ from PySide6.QtGui import QIcon
 from src.ui.views.invoicing_associate_view import InvoicingAssociateView
 from src.ui.components.sidebar import Sidebar
 
+
 class Window(QMainWindow):
     def __init__(self, title: str):
         super().__init__()
@@ -19,5 +20,8 @@ class Window(QMainWindow):
 
         self.sidebar = Sidebar()
         main_layout.addWidget(self.sidebar)
+
+        self.views = QStackedWidget()
+        main_layout.addWidget(self.views)
 
         self.setCentralWidget(main_widget)

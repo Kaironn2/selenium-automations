@@ -5,7 +5,7 @@ from src.ui.helpers.icon_color_converter import IconColorConverter as icc
 
 
 class SidebarButton(QPushButton):
-    def __init__(self, text, key, icon_path=None, on_click=None, parent=None):
+    def __init__(self, text: str, key: str, icon_path: str = None, icon_size: int = 24, on_click=None, parent=None):
         super().__init__(text, parent)
         self.setFlat(True)
         self.setCursor(Qt.PointingHandCursor)
@@ -21,8 +21,8 @@ class SidebarButton(QPushButton):
                 border: none;
             }
             QPushButton:checked {
-                font-weight: bold;
-                background: #222;
+                background: #181623;
+                border-left: 4px solid #5a43a5;
             }
             QPushButton:hover {
                 background: #333;
@@ -36,7 +36,7 @@ class SidebarButton(QPushButton):
                 self.setIcon(icc.svg_icon_white(icon_path))
             else:
                 self.setIcon(QIcon(icon_path))
-            self.setIconSize(QSize(36, 36))
+            self.setIconSize(QSize(icon_size, icon_size))
 
         if on_click:
             self.clicked.connect(lambda _: on_click(self.key))
