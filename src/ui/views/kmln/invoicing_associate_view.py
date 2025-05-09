@@ -1,6 +1,6 @@
 from src.ui.qt_imports import *
-from src.ui.components.push_buttons import StartButton
-from src.ui.components.line_edit import ModernLineEdit
+from src.ui.components.components_import import *
+from src.pipelines.kmln.invoicing_associate import InvoicingAssociatePipeline
 
 
 class InvoicingAssociateView(QWidget):
@@ -25,7 +25,7 @@ class InvoicingAssociateView(QWidget):
 
         central_layout.addSpacing(24)
 
-        self.start_btn = StartButton()
+        self.start_btn = StartButton(on_click=self.run_pipeline)
         self.start_btn.setFixedWidth(160)
         central_layout.addWidget(self.start_btn, alignment=Qt.AlignCenter)
 
@@ -37,3 +37,16 @@ class InvoicingAssociateView(QWidget):
     def disable_inputs(self):
         self.input.setEnabled(False)
         self.start_btn.setEnabled(False)
+
+    def enable_inputs(self):
+        self.input.setEnabled(True)
+        self.start_btn.setEnabled(True)
+
+    def run_pipeline(self):
+        self.disable_inputs()
+        self.thread, self.worker = run_pipeline_in_thread(
+            self,
+            InvoicingAssociatePipeline,
+            on_finished=self.enable_inputs,
+            collection=self.input.text()
+        )

@@ -1,17 +1,10 @@
 import os
 import json
 
-from src.selenium_helpers.login import LoginUtils
-from src.selenium_helpers.driver_getter import DriverGetter
-from src.utils.logging_utils import LoggingUtils
-from src.utils.path_utils import PathUtils
-
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from src.selenium_helpers.selenium_imports import *
 
 
-class InvoicingAssociate(DriverGetter, LoginUtils):
+class InvoicingAssociatePipeline(DriverGetter, LoginUtils):
     def __init__(self, collection: str):
         super().__init__()
         self.collection = collection
@@ -22,7 +15,7 @@ class InvoicingAssociate(DriverGetter, LoginUtils):
         self.invoicing_url_getter()
         self.collection_filter()
         self.load_invoicing_references()
-        input('Pressione Enter para continuar...')
+        input('Remover esse input da pipeline quando for usar')
         self.get_table_data_and_set_input()
 
     def invoicing_url_getter(self):
@@ -65,5 +58,5 @@ class InvoicingAssociate(DriverGetter, LoginUtils):
                         continue
 
 if __name__ == '__main__':
-    driver = InvoicingAssociate('2025/04/21')
+    driver = InvoicingAssociatePipeline('2025/04/21')
     driver.run()

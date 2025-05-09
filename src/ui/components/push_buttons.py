@@ -73,3 +73,6 @@ class StartButton(BaseButton):
             }
         ''')
         self.setFixedSize(140, 40)
+
+        if on_click:
+            self.clicked.connect(on_click)
