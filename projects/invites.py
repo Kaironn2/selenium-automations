@@ -39,7 +39,7 @@ class InvitesPipeline(DriverGetter, LoginUtils):
         input_cliente = self.driver.find_element(By.ID, 'descricaoCliente')
         input_cliente.clear()
         input_cliente.send_keys(customer_name)
-        sleep(2)  # Aguarda sugestões aparecerem
+        sleep(2)
         input_cliente.send_keys(Keys.ARROW_DOWN)
         input_cliente.send_keys(Keys.ENTER)
 

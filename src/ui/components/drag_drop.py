@@ -5,7 +5,7 @@ from PySide6.QtWidgets import QWidget, QLabel, QVBoxLayout, QFileDialog
 from PySide6.QtCore import Qt, Signal
 
 
-class DragDropWidget(QWidget):
+class DragDrop(QWidget):
     file_dropped = Signal(str)
 
     def __init__(self, accepted_extensions: list, description_text: str, droped_text: str = 'File received!', parent=None):

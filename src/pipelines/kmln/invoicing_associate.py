@@ -32,7 +32,7 @@ class InvoicingAssociatePipeline(DriverGetter, LoginUtils):
         self.logger.info(f'Filter applied: {self.collection}')
 
     def load_invoicing_references(self):
-        invoicing_file = PathUtils.KMLN_DATA_FOLDER / 'invoicing_references.json'
+        invoicing_file = PathUtils.KMLN_CONFIG_FOLDER / 'invoicing_references.json'
         with open (invoicing_file, encoding='utf-8') as file:
             self.invoicing_references = json.load(file)
         self.logger.info(f'Invoicing references loaded from: {invoicing_file}')
@@ -56,7 +56,3 @@ class InvoicingAssociatePipeline(DriverGetter, LoginUtils):
                     except Exception as e:
                         self.logger.error(f'Error setting reference for product {product}: {e}')
                         continue
-
-if __name__ == '__main__':
-    driver = InvoicingAssociatePipeline('2025/04/21')
-    driver.run()

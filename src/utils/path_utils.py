@@ -5,12 +5,12 @@ import os
 
 class PathUtils:
     ROOT = Path(__file__).parent.parent.parent
+
+    CONFIG_FOLDER = ROOT / 'config'
+    KMLN_CONFIG_FOLDER = CONFIG_FOLDER / 'kmln'
+    LOGS_FOLDER = ROOT / 'logs'
+
     SRC_FOLDER = ROOT / 'src'
-
-    DATA_FOLDER = SRC_FOLDER / 'data'
-    KMLN_DATA_FOLDER = DATA_FOLDER / 'kmln'
-    LOGS_FOLDER = DATA_FOLDER / 'logs'
-
     ASSETS_FOLDER = SRC_FOLDER / 'ui' / 'assets'
 
     @classmethod
